@@ -237,6 +237,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (imagePlusButton) {
     imagePlusButton.addEventListener("click", function () {
       imageCreditsToPurchase += 1; // Increase variation credits
+      if (imageCreditsToPurchase < 3) {
+        imageCreditsToPurchase = 3;
+      }
       updateImageCreditsDisplay(); // Update display
       updateTotalAmountToBeSpent(); // Add this line
     });
@@ -248,7 +251,11 @@ document.addEventListener("DOMContentLoaded", function () {
     imageMinusButton.addEventListener("click", function () {
       if (imageCreditsToPurchase > 0) {
         // Prevent going below 0
-        imageCreditsToPurchase -= 1; // Decrease variation credits
+        imageCreditsToPurchase -= 1;
+        if (imageCreditsToPurchase < 3) {
+          imageCreditsToPurchase = 0;
+        }
+        // Decrease variation credits
         updateImageCreditsDisplay(); // Update display
         updateTotalAmountToBeSpent(); // Add this line
       }
